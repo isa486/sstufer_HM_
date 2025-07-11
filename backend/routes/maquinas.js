@@ -5,8 +5,12 @@ import Mantenimiento from "../models/mantenimiento.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const maquinas = await Maquina.find();
-  res.json(maquinas);
+  try {
+    const maquinas = await Maquina.find();
+    res.json(maquinas);
+  } catch (err) {
+    res.status(500).json({ error: "Error al obtener máquinas", details: err });
+  }
 });
 
 router.post("/", async (req, res) => {
@@ -21,9 +25,13 @@ router.post("/", async (req, res) => {
 });
 
 router.get("/:id/mantenimientos", async (req, res) => {
-  const { id } = req.params;
-  const mantenimientos = await Mantenimiento.find({ idMaquina: id }).sort({ fecha: 1 });
-  res.json(mantenimientos);
+  try {
+    const { id } = req.params;
+    const mantenimientos = await Mantenimiento.find({ idMaquina: id }).sort({ fecha: 1 });
+    res.json(mantenimientos);
+  } catch (err) {
+    res.status(500).json({ error: "Error al obtener mantenimientos", details: err });
+  }
 });
 
 router.post("/:id/mantenimientos", async (req, res) => {
