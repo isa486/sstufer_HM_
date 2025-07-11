@@ -10,6 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Endpoint de prueba para saber si el backend está arriba
+app.get("/", (req, res) => {
+  res.send("¡Backend Staufer funcionando!");
+});
+
 app.use("/api/maquinas", maquinasRouter);
 
 const PORT = process.env.PORT || 4000;
@@ -21,4 +26,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
   })
   .catch(err => {
     console.error("Error al conectar con MongoDB:", err);
+    process.exit(1); // Sale con error si falla la conexión
   });
