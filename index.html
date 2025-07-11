@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historial de Mantenimiento - Máquinas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Máquinas - Historial de Mantenimiento</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Listado de Máquinas</h2>
+      <div id="lista-maquinas"></div>
+    </section>
+    <section id="agregar-maquina">
+      <h3>Agregar Nueva Máquina</h3>
+      <form id="form-maquina">
+        <input type="text" name="id" placeholder="ID de la máquina" required>
+        <input type="text" name="nombre" placeholder="Nombre" required>
+        <input type="text" name="qr" placeholder="Nombre archivo QR (opcional)">
+        <button type="submit">Agregar Máquina</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>Staufer - 2025</p>
+  </footer>
+  <script src="maquinas.js"></script>
+</body>
+</html>
